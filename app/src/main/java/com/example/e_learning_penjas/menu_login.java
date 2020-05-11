@@ -284,7 +284,6 @@ public class menu_login extends AppCompatActivity  implements Validator.Validati
              url = "http://192.168.1.71/penjas/login_guru.php";
         }
 
-
         StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
             @Override
