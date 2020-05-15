@@ -48,6 +48,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".menu_profil"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".menu_utama" />
         <activity
             android:name=".menu_utama"

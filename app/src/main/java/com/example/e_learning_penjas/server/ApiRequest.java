@@ -6,6 +6,7 @@ import com.example.e_learning_penjas.model.DataModel_register;
 import com.example.e_learning_penjas.model.model_cek_quiz.Response_cek;
 import com.example.e_learning_penjas.model.model_materi.Response_materi;
 import com.example.e_learning_penjas.model.model_nilai.Response_nilai;
+import com.example.e_learning_penjas.model.model_profil.Response_profil;
 import com.example.e_learning_penjas.model.model_siswa.Response_siswa;
 
 
@@ -76,6 +77,11 @@ public interface ApiRequest {
 
     @GET("data_siswa.php")
     Call<Response_siswa> Get_data_SISWA();
+
+    @GET("profil_siswa.php")
+    Call<Response_profil> profil_siswa(@Query("nis") String nis);
+
+
     @FormUrlEncoded
     @POST("update_baca.php")
     Call<BaseResponse> Up_baca(@Field("id_materi") String id_materi);

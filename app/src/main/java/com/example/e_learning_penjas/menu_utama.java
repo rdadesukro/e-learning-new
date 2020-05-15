@@ -80,7 +80,7 @@ public class menu_utama extends AppCompatActivity {
         }
 
         Glide.with(menu_utama.this)
-                .load("http://192.168.43.48/penjas/images/profil/ade.jpg")
+                .load("http://192.168.1.71/penjas/images/profil/ade.jpg")
                 .apply(new RequestOptions()
                         .fitCenter()
                         .circleCrop()
@@ -88,6 +88,12 @@ public class menu_utama extends AppCompatActivity {
                 .into(foto_profil);
     }
 
+
+    @OnClick(R.id.imageView4)
+    public void PROFIL() {
+        Intent intent = new Intent(menu_utama.this, menu_profil.class);
+        startActivity(intent);
+    }
 
     @OnClick(R.id.cardView6)
     public void lihat() {

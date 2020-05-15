@@ -40,7 +40,6 @@
                 android:id="@+id/cardView4"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/bg_no_item_city"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -59,8 +58,7 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/bg_no_item_city" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <ImageView
                         android:id="@+id/img_profil"
@@ -71,18 +69,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/siswa" />
-
-                    <ImageView
-                        android:id="@+id/btn_add"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/ic_edit_black_24dp"
-                        android:clickable="true"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ProgressBar
                         android:id="@+id/progres_foto"
@@ -103,7 +89,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView4">
@@ -114,7 +99,55 @@
 
 
                     <TextView
-                        android:id="@+id/txt_opd"
+                        android:id="@+id/txt_jk"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Nama Opd"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/n"
+                        app:layout_constraintTop_toBottomOf="@+id/n" />
+
+                    <TextView
+                        android:id="@+id/n"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Jenis Kelamin"
+                        android:textColor="#000000"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_no" />
+
+                    <TextView
+                        android:id="@+id/txt_no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="Nama Opd"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/N"
+                        app:layout_constraintTop_toBottomOf="@+id/N" />
+
+                    <TextView
+                        android:id="@+id/N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="No Hp"
+                        android:textColor="#000000"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_kls" />
+
+                    <TextView
+                        android:id="@+id/txt_kls"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -134,10 +167,10 @@
                         android:textColor="#000000"
                         android:textSize="18dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txt_email" />
+                        app:layout_constraintTop_toBottomOf="@+id/txt_tgl" />
 
                     <TextView
-                        android:id="@+id/txt_email"
+                        android:id="@+id/txt_tgl"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -157,10 +190,10 @@
                         android:textColor="#000000"
                         android:textSize="18dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txt_username" />
+                        app:layout_constraintTop_toBottomOf="@+id/txt_nis" />
 
                     <TextView
-                        android:id="@+id/txt_username"
+                        android:id="@+id/txt_nis"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
