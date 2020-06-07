@@ -25,7 +25,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu_bantuan"></activity>
+        <activity android:name=".menu_bantuan"
+            android:label="Menu Bantuan"
+            android:parentActivityName=".menu_utama"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".menu_nilai_guru"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -37,6 +40,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".menu_siswa"
+            android:label="Menu Siswa"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".menu_nilai"
@@ -50,7 +54,8 @@
         <activity
             android:name=".menu_register"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".menu_tenttang" />
+        <activity android:name=".menu_tenttang"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".menu_lupa_password"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -61,7 +66,8 @@
         <activity
             android:name=".menu_utama"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".menu_pembuka" />
+        <activity android:name=".menu_login"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".menu_quiz"
             android:parentActivityName=".menu_utama"
@@ -73,7 +79,7 @@
             android:name=".quiz_satu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".menu_login"
+            android:name=".menu_pembuka"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

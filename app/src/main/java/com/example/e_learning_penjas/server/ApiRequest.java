@@ -86,6 +86,13 @@ public interface ApiRequest {
             @Field("password_baru") String password_baru,
             @Field("password") String password);
 
+    @FormUrlEncoded
+    @POST("update_pass_guru.php")
+    Call<ResponsModel> Update_pass_guru(
+            @Field("nip") String nip,
+            @Field("password_baru") String password_baru,
+            @Field("password") String password);
+
 
     @Multipart
     @POST("tambah_materi.php")

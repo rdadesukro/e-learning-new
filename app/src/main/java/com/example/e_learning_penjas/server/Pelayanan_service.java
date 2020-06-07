@@ -22,4 +22,9 @@ public interface Pelayanan_service {
     @POST("edit_foto.php")
     Call<BaseResponse> edit_foto(@Field("foto") String foto,
                                  @Field("nis") String nis);
+
+    @FormUrlEncoded
+    @POST("edit_foto_guru.php")
+    Call<BaseResponse> edit_foto_guru(@Field("foto") String foto,
+                                 @Field("nip") String nip);
 }

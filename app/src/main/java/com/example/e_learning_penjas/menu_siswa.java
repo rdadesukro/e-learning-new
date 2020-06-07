@@ -93,7 +93,7 @@ public class menu_siswa extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(false);
         }
 
-
+        getSupportActionBar().setTitle("Data Siswa");
 
 
         init_get_laporan_baru_saya();

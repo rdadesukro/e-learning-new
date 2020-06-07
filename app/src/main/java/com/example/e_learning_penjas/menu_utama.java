@@ -133,6 +133,18 @@ public class menu_utama extends AppCompatActivity {
         startActivity(intent);
 
     }
+    @OnClick(R.id.card_ttg)
+    public void card_ttg() {
+        Intent intent = new Intent(menu_utama.this, menu_tenttang.class);
+        startActivity(intent);
+
+    }
+    @OnClick(R.id.card_btn)
+    public void card_btn() {
+        Intent intent = new Intent(menu_utama.this, menu_bantuan.class);
+        startActivity(intent);
+
+    }
     @OnClick(R.id.card_klr)
     public void card_klr() {
         // TODO Auto-generated method stub
