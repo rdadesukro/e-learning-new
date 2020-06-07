@@ -1,9 +1,13 @@
 package com.example.e_learning_penjas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,6 +21,9 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.e_learning_penjas.adapter.adapter_nilai;
@@ -50,11 +57,12 @@ public class menu_siswa extends AppCompatActivity {
     public final static String TAG_AMBIL_INSTNASI_ID = "ambil_id_ins";
     public static final String my_shared_preferences = "my_shared_preferences";
     String id,nik,nama,instansi_id;
-
+    SearchView searchView;
     public static final String session_status = "session_status";
     SwipeRefreshLayout mSwipeRefreshLayout;
     Boolean session = false;
-
+    @BindView(R.id.toolbar3)
+    androidx.appcompat.widget.Toolbar Toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +82,16 @@ public class menu_siswa extends AppCompatActivity {
         mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swifeRefresh);
 
 
+        setSupportActionBar(Toolbar);
+//        setSupportActionBar(Toolbar);
+//        if (getSupportActionBar()!=null)
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setHomeButtonEnabled(false);
+        }
 
 
 
@@ -96,6 +114,54 @@ public class menu_siswa extends AppCompatActivity {
 
         ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
         Call<Response_siswa> call = api.Get_data_SISWA();
+
+
+        call.enqueue(new Callback<Response_siswa>() {
+            @Override
+            public void onResponse(Call<Response_siswa> call, Response<Response_siswa> response) {
+
+                try {
+
+                    data = response.body().getResult();
+                    adapter = new adapter_siswa(menu_siswa.this,data);
+
+                    mRecycler.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+
+                    mSwipeRefreshLayout.setRefreshing(false);
+                    // Toast.makeText(menu_laporan_masuk_pejabat.this, "cek data"+data.size(), Toast.LENGTH_SHORT).show();
+                    Log.i("cek_data", "onResponse: "+data.size());
+
+
+                    if (data.size()==0){
+
+                        Toast.makeText(menu_siswa.this, "Data Tidak Ada", Toast.LENGTH_SHORT).show();
+
+
+                    } else {
+
+                    }
+                } catch (Exception e) {
+                    Log.e("onResponse", "There is an error"+e);
+
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Response_siswa> call, Throwable t) {
+                t.printStackTrace();
+
+
+            }
+        });
+    }
+
+    public void cari() {
+
+        ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
+        Call<Response_siswa> call = api.cari_data_siswa(String.valueOf(searchView.getQuery()));
 
 
         call.enqueue(new Callback<Response_siswa>() {
@@ -291,6 +357,38 @@ public class menu_siswa extends AppCompatActivity {
 //            pDialog.show();
         }
         return connectStatus;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.cari,menu);
+        MenuItem searchViewItem = menu.findItem(R.id.app_bar_search);
+        searchView = (SearchView) MenuItemCompat.getActionView(searchViewItem);
+        searchView.setQueryHint("Cari Dat Siswa...");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                searchView.clearFocus();
+
+
+
+
+                return false;
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //  adapter.getFilter().filter(newText);
+                cari();
+
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
 }

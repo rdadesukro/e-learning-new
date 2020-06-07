@@ -6,11 +6,6 @@ import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +21,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.e_learning_penjas.adapter.adapter_nilai;
-import com.example.e_learning_penjas.model.ResponsModel;
 import com.example.e_learning_penjas.model.model_nilai.Response_nilai;
 import com.example.e_learning_penjas.model.model_nilai.ResultItem_nilai;
 import com.example.e_learning_penjas.server.ApiRequest;
@@ -35,7 +29,14 @@ import com.example.e_learning_penjas.server.Retroserver;
 import java.util.ArrayList;
 import java.util.List;
 
-public class menu_nilai extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class menu_nilai_guru extends AppCompatActivity {
+
     private List<ResultItem_nilai> data = new ArrayList<>();
     adapter_nilai adapter;
 
@@ -65,7 +66,7 @@ public class menu_nilai extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_nilai);
+        setContentView(R.layout.menu_nilai_guru);
         ButterKnife.bind(this);
 
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
@@ -113,9 +114,9 @@ public class menu_nilai extends AppCompatActivity {
         ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
         Call<Response_nilai> call = null;
         if (status.equals("1")){
-           call = api.Get_data_NILAI("1",nik);
+            call = api.Get_data_NILAI_guru("1");
         }else {
-            call = api.Get_data_NILAI("2",nik);
+            call = api.Get_data_NILAI_guru("2");
         }
 
         call.enqueue(new Callback<Response_nilai>() {
@@ -125,19 +126,71 @@ public class menu_nilai extends AppCompatActivity {
                 try {
 
                     data = response.body().getResult();
-                    adapter = new adapter_nilai(menu_nilai.this,data);
+                    adapter = new adapter_nilai(menu_nilai_guru.this,data);
 
                     mRecycler.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
 
                     mSwipeRefreshLayout.setRefreshing(false);
-                   // Toast.makeText(menu_laporan_masuk_pejabat.this, "cek data"+data.size(), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(menu_laporan_masuk_pejabat.this, "cek data"+data.size(), Toast.LENGTH_SHORT).show();
                     Log.i("cek_data", "onResponse: "+data.size());
 
 
                     if (data.size()==0){
 
-                        Toast.makeText(menu_nilai.this, "Data Tidak Ada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(menu_nilai_guru.this, "Data Tidak Ada", Toast.LENGTH_SHORT).show();
+
+
+
+                    } else {
+
+                    }
+                } catch (Exception e) {
+                    Log.e("onResponse", "There is an error"+e);
+
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Response_nilai> call, Throwable t) {
+                t.printStackTrace();
+
+
+            }
+        });
+    }
+    public void cari() {
+
+        ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
+        Call<Response_nilai> call = null;
+        if (status.equals("1")){
+            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),"1");
+        }else {
+            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),"2");
+        }
+
+        call.enqueue(new Callback<Response_nilai>() {
+            @Override
+            public void onResponse(Call<Response_nilai> call, Response<Response_nilai> response) {
+
+                try {
+
+                    data = response.body().getResult();
+                    adapter = new adapter_nilai(menu_nilai_guru.this,data);
+
+                    mRecycler.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+
+                    mSwipeRefreshLayout.setRefreshing(false);
+                    // Toast.makeText(menu_laporan_masuk_pejabat.this, "cek data"+data.size(), Toast.LENGTH_SHORT).show();
+                    Log.i("cek_data", "onResponse: "+data.size());
+
+
+                    if (data.size()==0){
+
+                        Toast.makeText(menu_nilai_guru.this, "Data Tidak Ada", Toast.LENGTH_SHORT).show();
 
 
 
@@ -210,7 +263,7 @@ public class menu_nilai extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-            startActivity(new Intent(menu_nilai.this, menu_utama.class));
+            startActivity(new Intent(menu_nilai_guru.this, menu_utama.class));
             finish();
         }
         return super.onKeyDown(keyCode, event);
@@ -239,7 +292,7 @@ public class menu_nilai extends AppCompatActivity {
         }
 
     }
-//
+    //
 //
 //
 //
@@ -315,40 +368,36 @@ public class menu_nilai extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.tes,menu);
-//        MenuItem searchViewItem = menu.findItem(R.id.app_bar_search);
-//        searchView = (SearchView) MenuItemCompat.getActionView(searchViewItem);
-//        searchView.setQueryHint("Cari Nilai Siswa...");
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//
-//
-//                searchView.clearFocus();
-//                if (status.equals("1")){
-//                  //  unit_cari();
-//                }else {
-//                    //unit_cari_dialihkan();
-//                }
-//
-//
-//
-//                return false;
-//
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                //  adapter.getFilter().filter(newText);
-//                if (status.equals("masuk")){
-//                 //   unit_cari();
-//                }else {
-//                   // unit_cari_dialihkan();
-//                }
-//
-//                return false;
-//            }
-//        });
+        inflater.inflate(R.menu.menu_cari,menu);
+        MenuItem searchViewItem = menu.findItem(R.id.app_bar_search);
+        searchView = (SearchView) MenuItemCompat.getActionView(searchViewItem);
+        searchView.setQueryHint("Cari Nilai Siswa...");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                searchView.clearFocus();
+                if (status.equals("1")){
+                    cari();
+                }else {
+                    cari();
+                }
+
+
+
+                return false;
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //  adapter.getFilter().filter(newText);
+                cari();
+
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -379,5 +428,4 @@ public class menu_nilai extends AppCompatActivity {
         return true;
 
     }
-
 }

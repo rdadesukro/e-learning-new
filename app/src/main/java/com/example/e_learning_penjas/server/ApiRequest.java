@@ -96,7 +96,23 @@ public interface ApiRequest {
             @Part MultipartBody.Part file);
 
     @GET("data_nilai.php")
-    Call<Response_nilai> Get_data_NILAI();
+    Call<Response_nilai> Get_data_NILAI(@Query("quiz") String quiz,@Query("nis") String nis);
+    @GET("data_nilai_guru.php")
+    Call<Response_nilai> Get_data_NILAI_guru(@Query("quiz") String quiz);
+
+
+    @FormUrlEncoded
+    @POST("cari_nilai_siswa.php")
+    Call<Response_nilai> cari_nilai_siswa(
+            @Field("search") String search,
+            @Field("quiz") String quiz);
+
+    @FormUrlEncoded
+    @POST("cari_data_siswa.php")
+    Call<Response_siswa> cari_data_siswa(
+            @Field("search") String search);
+
+
 
     @GET("data_siswa.php")
     Call<Response_siswa> Get_data_SISWA();

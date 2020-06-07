@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item
+        android:id="@+id/quiz1"
+        android:title="Quiz  Satu"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/quiz2"
+        android:title="Quiz  Dua"
+        app:showAsAction="never"
+        />
+
+</menu>

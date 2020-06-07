@@ -117,9 +117,14 @@ public class menu_utama extends AppCompatActivity {
     }
     @OnClick(R.id.cardView8)
     public void nilai() {
-        // TODO Auto-generated method stub
-        Intent intent = new Intent(menu_utama.this, menu_nilai.class);
-        startActivity(intent);
+        if (status.equals("siswa")){
+            Intent intent = new Intent(menu_utama.this, menu_nilai.class);
+            startActivity(intent);
+
+        }else {
+            Intent intent = new Intent(menu_utama.this, menu_nilai_guru.class);
+            startActivity(intent);
+        }
     }
 
     @OnClick(R.id.card_quiz)

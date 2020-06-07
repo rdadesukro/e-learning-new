@@ -25,8 +25,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu_profil_guru"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".menu_bantuan"></activity>
+        <activity
+            android:name=".menu_nilai_guru"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".menu_profil_guru"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".menu_detail_siswa"
             android:theme="@style/AppTheme.NoActionBar" />
