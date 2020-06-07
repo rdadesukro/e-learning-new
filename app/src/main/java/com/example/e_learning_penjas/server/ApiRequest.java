@@ -3,6 +3,7 @@ package com.example.e_learning_penjas.server;
 
 import com.example.e_learning_penjas.model.BaseResponse;
 import com.example.e_learning_penjas.model.DataModel_register;
+import com.example.e_learning_penjas.model.ResponsModel;
 import com.example.e_learning_penjas.model.model_cek_quiz.Response_cek;
 import com.example.e_learning_penjas.model.model_materi.Response_materi;
 import com.example.e_learning_penjas.model.model_nilai.Response_nilai;
@@ -64,6 +65,28 @@ public interface ApiRequest {
                                 @Query("quiz") String quiz);
 
 
+    @FormUrlEncoded
+    @POST("lupa_password_siswa.php")
+    Call<ResponsModel> lupa_password_siswa(
+            @Field("nis") String nis,
+            @Field("password") String password,
+            @Field("tgl_lahir") String tgl_lahir);
+
+    @FormUrlEncoded
+    @POST("lupa_password_guru.php")
+    Call<ResponsModel> lupa_password_guru(
+            @Field("nip") String nip,
+            @Field("password") String password,
+            @Field("tgl_lahir") String tgl_lahir);
+
+    @FormUrlEncoded
+    @POST("update_pass_siswa.php")
+    Call<ResponsModel> Update_pass_siswa(
+            @Field("nis") String nis,
+            @Field("password_baru") String password_baru,
+            @Field("password") String password);
+
+
     @Multipart
     @POST("tambah_materi.php")
     Call<BaseResponse> tambah_materi(
@@ -80,6 +103,11 @@ public interface ApiRequest {
 
     @GET("profil_siswa.php")
     Call<Response_profil> profil_siswa(@Query("nis") String nis);
+
+
+    @GET("profil_guru.php")
+    Call<Response_profil> profil_guru(@Query("nip") String nip);
+
 
 
     @FormUrlEncoded

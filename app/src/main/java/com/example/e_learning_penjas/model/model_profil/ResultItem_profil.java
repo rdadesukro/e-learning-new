@@ -7,6 +7,29 @@ public class ResultItem_profil {
 	@SerializedName("jk")
 	private String jk;
 
+	public String getNama_mapel() {
+		return nama_mapel;
+	}
+
+	public void setNama_mapel(String nama_mapel) {
+		this.nama_mapel = nama_mapel;
+	}
+
+	@SerializedName("nama_mapel")
+	private String nama_mapel;
+
+
+	public String getNip() {
+		return nip;
+	}
+
+	public void setNip(String nip) {
+		this.nip = nip;
+	}
+
+	@SerializedName("nip")
+	private String nip;
+
 	@SerializedName("wali_kelas")
 	private String waliKelas;
 

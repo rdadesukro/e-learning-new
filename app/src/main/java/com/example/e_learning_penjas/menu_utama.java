@@ -91,8 +91,15 @@ public class menu_utama extends AppCompatActivity {
 
     @OnClick(R.id.imageView4)
     public void PROFIL() {
-        Intent intent = new Intent(menu_utama.this, menu_profil.class);
-        startActivity(intent);
+        if (status.equals("siswa")){
+            Intent intent = new Intent(menu_utama.this, menu_profil.class);
+            startActivity(intent);
+
+        }else {
+            Intent intent = new Intent(menu_utama.this, menu_profil_guru.class);
+            startActivity(intent);
+        }
+
     }
 
     @OnClick(R.id.cardView6)
