@@ -1,0 +1,22 @@
+<?php
+require_once('koneksi.php');
+global $connect;
+    $id = $_POST["id"];
+
+    $query = "SELECT firstName, lastName FROM users WHERE id = '$id'";
+
+    $result = mysqli_query($connect, $query);
+    $number_of_rows = mysqli_num_rows($result);
+
+    $response = array();
+
+    if($number_of_rows > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+            $response[] = $row;
+        }
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode(array("users"=>$response));
+    mysqli_close($connect);
+	?>
