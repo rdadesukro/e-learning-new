@@ -25,39 +25,39 @@ public class mapel_2 extends SQLiteOpenHelper {
         db.execSQL(sql);
 
         ContentValues values = new ContentValues();
-        values.put("soal", "Nama komponen AC (air conditioners) yang berputar menekan gas refrigerant sehingga temperaturnya meningkat adalah… ?");
-        values.put("pil_a", "Kondensor");
-        values.put("pil_b", "kompresor");
-        values.put("pil_c", "Refrigerant");
+        values.put("soal", "Orang yang menciptakan permainan bola basket adalah...");
+        values.put("pil_a", "M. Luther");
+        values.put("pil_b", "James Nasmith");
+        values.put("pil_c", "Hasley. T");
         values.put("jwban", "1");
         //  values.put("img", R.drawable.sapi);
         db.insert("tbl_soal1", "soal", values);
 
-        values.put("soal", "Komponen AC yang berbentuk tabung dan ada kaca pengintai pada bagian atasnya adalah…?");
-        values.put("pil_a", "Dryer");
-        values.put("pil_b", "kondensor");
-        values.put("pil_c", "Evaporator");
-        values.put("jwban", "1");
+        values.put("soal", "Berapakah jumlah pemain bola basket...");
+        values.put("pil_a", "5 Orang Pemain dan 5 Orang Cadangan dalam satu regu");
+        values.put("pil_b", "6 Orang dalam satu regu");
+        values.put("pil_c", "11 Orang dalam dua regu");
+        values.put("jwban", "0");
         //  values.put("img", R.drawable.hidup);
         db.insert("tbl_soal1", "soal", values);
 
-        values.put("soal", "Nama komponen AC yang berfungsi menyerap panas refrigerant dan mengubah gas refrigerant menjadi cairan adalah…?");
-        values.put("pil_a", "Kondensor");
-        values.put("pil_b", "kompresor");
-        values.put("pil_c", "Refrigeran");
-        values.put("jwban", "0");
+        values.put("soal", "Menggiring dalam permainan bola basket berarti...");
+        values.put("pil_a", "Shooting");
+        values.put("pil_b", "Jagling");
+        values.put("pil_c", "Dribbling");
+        values.put("jwban", "2");
         //  values.put("img", R.drawable.iakan);
         db.insert("tbl_soal1", "soal", values);
 
-        values.put("soal", "Zat cair yang terdapat di dalam system AC adalah…?");
-        values.put("pil_a", "Refrigeran");
-        values.put("pil_b", "Dryer");
-        values.put("pil_c", "kompresor");
+        values.put("soal", "Teknik yang mendorong badan ke belakang saat melakukan shoot adalah...");
+        values.put("pil_a", "Fade Away");
+        values.put("pil_b", "Hook Shoot");
+        values.put("pil_c", "Jump Shoot");
         values.put("jwban", "0");
         //  values.put("img", R.drawable.ramb);
         db.insert("tbl_soal1", "soal", values);
 
-        values.put("soal", "Alat yang berfungsi menyerap panas udara sehingga membuat udara menjadi digin adalah…?");
+        values.put("soal", ". .....teknik yang sangat efektif bila pemain dijaga oleh orang yang lebih tinggi daripada pemain");
         values.put("pil_a", "Refrigeran");
         values.put("pil_b", "Dryer");
         values.put("pil_c", "Evaporator");
@@ -65,23 +65,23 @@ public class mapel_2 extends SQLiteOpenHelper {
         // values.put("img", R.drawable.ayam);
         db.insert("tbl_soal1", "soal", values);
 
-        values.put("soal", "Urutan sirkulasi sistem AC yang benar adalah….?");
-        values.put("pil_a", "kompresor, kondensor, receiver, expansion valve, evaporator");
-        values.put("pil_b", "kompresor, receiver, kondensor, evaporator, expansion valve");
-        values.put("pil_c", "kompresor, evaporator ,expansion valve, receiver,kondensor");
-        values.put("jwban", "0");
+        values.put("soal", "Teknik menembak yang sering dilakukan pemain dari luar daerah bersyarat lawan dalam bola basket adalah...");
+        values.put("pil_a", "Tembak Kaiton");
+        values.put("pil_b", "Tembakan dari samping");
+        values.put("pil_c", "Tembakan langsung ke tangan");
+        values.put("jwban", "1");
         //  values.put("img", R.drawable.tebu);
         db.insert("tbl_soal1", "soal", values);
 
-        values.put("soal", "Refriger yang berada antara evaporator dan kompresor adalah…?");
-        values.put("pil_a", "Cair");
-        values.put("pil_b", "Antara cair dan gas");
-        values.put("pil_c", "Gas");
-        values.put("jwban", "1");
+        values.put("soal", "Sistem pertahanan dalam permainan bola basket dimana setiap pemain selalu berusaha mendekati lawan satu-satu, dari pertanyaan tersebut jawaban yang benar adalah...");
+        values.put("pil_a", "Pressing defence");
+        values.put("pil_b", "Zone defence");
+        values.put("pil_c", "Man to man defence");
+        values.put("jwban", "2");
         //  values.put("img", R.drawable.kelapa);
         db.insert("tbl_soal1", "soal", values);
 
-        values.put("soal", "Keadaan tekanan dan temperatur refriger pada kondensor adalah….??");
+        values.put("soal", "Permainan bola basket termasuk permainan…");
         values.put("pil_a", "Sedang");
         values.put("pil_b", "Renda");
         values.put("pil_c", "Tinggi");
