@@ -3,11 +3,12 @@ require_once 'koneksi.php';
 
 header("Content-type:application/json");
 $search = $_POST['search'];
+$id_guru=$_POST['id_guru'];
 
 
 
 
-$query = "SELECT * FROM `siswa`,kelas WHERE siswa.id_kelas=kelas.id_kelas and siswa.nama LIKE '%$search%'";
+$query = "SELECT * FROM `siswa`,kelas WHERE siswa.id_kelas=kelas.id_kelas and siswa.nama LIKE '%$search%' and siswa.id_guru='$id_guru'";
 
 
 $result = mysqli_query($konek,$query);

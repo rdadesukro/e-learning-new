@@ -4,11 +4,12 @@ require_once 'koneksi.php';
 header("Content-type:application/json");
 $search = $_POST['search'];
 $quiz=$_POST['quiz'];
+$id_guru=$_POST['id_guru'];
 
 
 
 $query = "SELECT nilai.nis AS ambil_nis,siswa.nama,nilai.status,kelas.nama_kelas,nilai.quiz,nilai.nilai,siswa.foto 
-FROM nilai,kelas,siswa WHERE siswa.nis=nilai.nis AND kelas.id_kelas=nilai.id_kelas AND nilai.quiz='$quiz' AND siswa.nama LIKE '%$search%'";
+FROM nilai,kelas,siswa WHERE siswa.nis=nilai.nis AND kelas.id_kelas=nilai.id_kelas AND nilai.quiz='$quiz' AND siswa.nama LIKE '%$search%' and nilai.id_guru='$id_guru'";
 
 
 $result = mysqli_query($konek,$query);
