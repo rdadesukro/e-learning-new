@@ -75,7 +75,7 @@ public class menu_nilai extends AppCompatActivity {
         mRecycler = (RecyclerView) findViewById(R.id.rv);
         Log.i("id_pemohon"+id, "onCreate: "+instansi_id);
 
-        Toast.makeText(this, "ID"+id, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "ID"+id, Toast.LENGTH_SHORT).show();
         mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swifeRefresh);
 
         setSupportActionBar(Toolbar);

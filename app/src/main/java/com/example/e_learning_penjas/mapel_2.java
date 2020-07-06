@@ -58,10 +58,10 @@ public class mapel_2 extends SQLiteOpenHelper {
         db.insert("tbl_soal1", "soal", values);
 
         values.put("soal", ". .....teknik yang sangat efektif bila pemain dijaga oleh orang yang lebih tinggi daripada pemain");
-        values.put("pil_a", "Refrigeran");
-        values.put("pil_b", "Dryer");
-        values.put("pil_c", "Evaporator");
-        values.put("jwban", "2");
+        values.put("pil_a", "Hook Shoot");
+        values.put("pil_b", "Oper");
+        values.put("pil_c", "Servis");
+        values.put("jwban", "0");
         // values.put("img", R.drawable.ayam);
         db.insert("tbl_soal1", "soal", values);
 
@@ -82,26 +82,26 @@ public class mapel_2 extends SQLiteOpenHelper {
         db.insert("tbl_soal1", "soal", values);
 
         values.put("soal", "Permainan bola basket termasuk permainan…");
-        values.put("pil_a", "Sedang");
-        values.put("pil_b", "Renda");
-        values.put("pil_c", "Tinggi");
+        values.put("pil_a", "Bola kecil");
+        values.put("pil_b", "Bola sedang");
+        values.put("pil_c", "Bola besar");
         values.put("jwban", "2");
         //  values.put("img", R.drawable.tikus);
         db.insert("tbl_soal1", "soal", values);
 
 
-        values.put("soal",  "Proses pendinginan refrigerant pada kondensor melalui…..?");
-        values.put("pil_a", "Gabungan antara air dan udara ");
-        values.put("pil_b", "pendinginan air");
-        values.put("pil_c", "Pendinginan udara");
-        values.put("jwban", "0");
+        values.put("soal",  "Tujuan menggiring bola tinggi dalam bermain basket adalah...");
+        values.put("pil_a", "Mempercepat penyerangan");
+        values.put("pil_b", "Mengontrol bola didaerah sendiri");
+        values.put("pil_c", ". Memperlambat permainan");
+        values.put("jwban", "2");
         // values.put("img", R.drawable.padi);
         db.insert("tbl_soal1", "soal", values);
 
-        values.put("soal", "Kaca pengintai pada receiver berfungsi untuk….?");
-        values.put("pil_a", "Melihat refrigeran");
-        values.put("pil_b", "Melihat jumlah refrigerant");
-        values.put("pil_c", "Melihat gelembung udarah yang ada pada refrigerant");
+        values.put("soal", "Induk organisasi basket internasinal ialah...");
+        values.put("pil_a", "FIBA");
+        values.put("pil_b", "FERBASI");
+        values.put("pil_c", "PPSI");
         values.put("jwban", "0");
         //  values.put("img", R.drawable.burung);
         db.insert("tbl_soal1", "soal", values);

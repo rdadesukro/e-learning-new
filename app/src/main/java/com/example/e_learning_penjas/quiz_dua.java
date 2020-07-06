@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -23,7 +24,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_learning_penjas.model.BaseResponse;
 import com.example.e_learning_penjas.model.Soal;
+import com.example.e_learning_penjas.server.ApiRequest;
+import com.example.e_learning_penjas.server.Retroserver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +35,11 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class quiz_dua extends AppCompatActivity {
 
@@ -52,30 +61,36 @@ public class quiz_dua extends AppCompatActivity {
     private static final String TAG_MESSAGE = "message";
     private String KEY_ID = "id_profil";
     TextView nilai;
-    private String KEY_ID_USER = "id";
-    private String KEY_NO = "no_hp";
+
     private static final String TAG = quiz_dua.class.getSimpleName();
-    private String KEY_NIS = "nis";
-    private String KEY_ID_QUIZ = "id_quiz";
-    private String KEY_NILAI = "nilai";
-    private String KEY_GURU = "id_guru";
-    private String KEY_STATUS = "status";
+    SweetAlertDialog pd_new;
     TextView mapel;
-    private String KEY_MAPEL = "mapel";
+
     int total;
     int success;
-    String tag_json_obj = "json_obj_req";
+
     EditText inputUser,inputnis;
     TextView sts;
     SharedPreferences sharedpreferences;
-    public final static String TAG_userneme = "username";
-    public final static String TAG_ID = "nis";
+
     ImageView hapus;
-    public final static String TAG_level = "level";
-    public static final String my_shared_preferences = "my_shared_preferences";
+
     Boolean session = false;
+
+    String id_guru,id_kelas;
+    String id,nis,nama;
+
+    public final static String TAG_nis = "nis_ambil";
+    public final static String TAG_STATUS = "status";
+    public final static String TAG_GURU = "id_guru";
+    public final static String TAG_NAMA = "nama";
+    public final static String TAG_KELAS = "kelas";
+    public final static String TAG_ID_KELAS = "id_kelas";
+    public static final String my_shared_preferences = "my_shared_preferences";
+
     public static final String session_status = "session_status";
-    String id;
+    String validasi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,8 +108,16 @@ public class quiz_dua extends AppCompatActivity {
         img = (ImageView) findViewById(R.id.gambarKuis);
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
-        id = sharedpreferences.getString(TAG_ID, null);
+        nis = sharedpreferences.getString(TAG_nis, null);
+        nama = sharedpreferences.getString(TAG_NAMA, null);
+        id_guru = sharedpreferences.getString(TAG_GURU, null);
+        id_kelas = sharedpreferences.getString(TAG_ID_KELAS, null);
 
+        Log.i("data_quiz", "onCreate: "+nis+" "+nama+" "+id_guru+" "+id_kelas);
+
+
+        pd_new = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pd_new.getProgressHelper().setBarColor(Color.parseColor("#3395ff"));
         rg = (RadioGroup) findViewById(R.id.radioGroup1);
         rdA = (RadioButton) findViewById(R.id.radio0);
         rdB = (RadioButton) findViewById(R.id.radio1);
@@ -138,9 +161,9 @@ public class quiz_dua extends AppCompatActivity {
 
         inputUser = (EditText) v.findViewById(R.id.editTextNama);
         inputnis = (EditText) v.findViewById(R.id.editTextnis);
-        Bundle b = getIntent().getExtras();
-        inputUser.setText(b.getCharSequence("nama"));
-        inputnis.setText(b.getCharSequence("id"));
+
+        inputUser.setText(nama);
+        inputnis.setText(nis);
         btnOk.setOnClickListener(new View.OnClickListener()
         {
 
@@ -223,6 +246,8 @@ public class quiz_dua extends AppCompatActivity {
 
 
             Log.d("", jawabanYgDiPilih[urutan_soal_soal] + "");
+
+            Log.i("cek_pilihan", "tunjukanPertanyaan: "+jawabanYgDiPilih[urutan_soal_soal]);
             if (jawabanYgDiPilih[urutan_soal_soal] == 0)
                 rg.check(R.id.radio0);
             if (jawabanYgDiPilih[urutan_soal_soal] == 1)
@@ -234,6 +259,12 @@ public class quiz_dua extends AppCompatActivity {
 //                rg.check(R.id.radio3);
 
             pasangLabelDanNomorUrut();
+
+            if (validasi.equals("10")){
+                btnNext.setVisibility(View.GONE);
+            }else {
+                btnNext.setVisibility(View.VISIBLE);
+            }
 
             if (urutan_soal_soal == (listSoal.size() - 1)){
                 btnNext.setEnabled(false);
@@ -284,9 +315,9 @@ public class quiz_dua extends AppCompatActivity {
             tampilKotakAlert = new AlertDialog.Builder(quiz_dua.this).create();
             tampilKotakAlert.setTitle("Nilai");
             tampilKotakAlert.setMessage("Besdasdasdnar " +jumlahJawabanYgBenar + " dari "
-                    + (listSoal.size() +" soal. "+noSalah+ " Jawaban yang benar " +jawabanYgBenar[i]+"Total nialai anda = "+total));
+                    + (listSoal.size() +" soal. "+noSalah+ "Total nialai anda = "+total));
             // nilai.setText(total);
-            tampilKotakAlert.setButton(AlertDialog.BUTTON_NEUTRAL, "Lagi",
+            tampilKotakAlert.setButton(AlertDialog.BUTTON_NEUTRAL, "",
                     new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int which) {
@@ -356,7 +387,7 @@ public class quiz_dua extends AppCompatActivity {
             tampilKotakAlert = new AlertDialog.Builder(quiz_dua.this).create();
             tampilKotakAlert.setTitle("Nilai");
             tampilKotakAlert.setMessage("Benar " +jumlahJawabanYgBenar + " dari "
-                    + (listSoal.size() +" soal. "+noSalah+" Jawaban yang benar " +jawabanYgBenar+ " Total nialai anda = "+total));
+                    + (listSoal.size() +" soal. "+noSalah+ " Total nialai anda = "+total));
             nilai.setText(""+total);
             tampilKotakAlert.setButton(AlertDialog.BUTTON_NEUTRAL, "Lagi",
                     new DialogInterface.OnClickListener() {
@@ -380,7 +411,7 @@ public class quiz_dua extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             simapan_quiz();
                             cekPertanyaan = false;
-                            finish();
+
                         }
                     });
 
@@ -426,10 +457,82 @@ public class quiz_dua extends AppCompatActivity {
     private void pasangLabelDanNomorUrut() {
         txtno.setText("Soal ke-" + (urutanPertanyaan + 1) + " dari "
                 + listSoal.size());
+        validasi= String.valueOf(urutanPertanyaan+1);
     }
 
 
     private void simapan_quiz() {
 
+        pd_new.setTitle("Simpan Data");
+        pd_new.setContentText("Mohon tunggu sedang memproses...");
+        pd_new.show();
+        pd_new.setCancelable(false);
+
+
+        try {
+            ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
+            Call<BaseResponse> sendbio = api.simpan_quiz(
+                    nis,
+                    nama,
+                    id_guru,
+                    id_kelas,
+                    "2",
+                    String.valueOf(total));
+            sendbio.enqueue(new Callback<BaseResponse>() {
+                @Override
+                public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                    String value = response.body().getvalue();
+
+                    String message = response.body().getMessage();
+                    Log.i("data_pesan", "onResponse: "+value);
+                    //    Toast.makeText(menu_register_detail_bukan_warga_jambi.this, "Jaringan Error!"+message, Toast.LENGTH_SHORT);
+
+                    //  progress.dismiss();
+                    if (value.equals("1")) {
+                        pd_new.dismissWithAnimation();
+                        Toast.makeText(quiz_dua.this, "berhasil", Toast.LENGTH_SHORT).show();
+                        dialog_berhasil_simpan();
+                    } else {
+                        pd_new.dismiss();
+                        //    Toast.makeText(permohonan_informasi_publik.this, message, Toast.LENGTH_SHORT);
+                        //dialog_register_duplikat();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<BaseResponse> call, Throwable t) {
+                    // progress.dismiss();
+                    //  Toast.makeText(menu_register_detail_bukan_warga_jambi.this, "Jaringan Error!" + t, Toast.LENGTH_SHORT);
+                }
+            });
+
+        }catch (Exception e){
+            Log.i("data_error", "simpan_permohonan: "+e);
+
+        }
+
+
+
+
     }
+    void dialog_berhasil_simpan() {
+        SweetAlertDialog pDialog = new SweetAlertDialog(quiz_dua.this, SweetAlertDialog.SUCCESS_TYPE);
+        pDialog.setCancelable(false);
+        pDialog.setTitleText("Simpan Nilai Berhasil");
+        pDialog.setContentText("Lihat Nilai Anda Di Menu Nilai");
+        pDialog.setConfirmText("Ok");
+        pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismissWithAnimation();
+                Intent intent = new Intent(quiz_dua.this, menu_nilai.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        pDialog.setCanceledOnTouchOutside(false);
+        pDialog.show();
+
+    }
+
 }

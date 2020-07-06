@@ -61,6 +61,7 @@ public class menu_nilai_guru extends AppCompatActivity {
     public static final String session_status = "session_status";
     SwipeRefreshLayout mSwipeRefreshLayout;
     Boolean session = false;
+    String id_guru;
     @BindView(R.id.toolbar3)
     androidx.appcompat.widget.Toolbar Toolbar;
     @Override
@@ -72,6 +73,7 @@ public class menu_nilai_guru extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
         nik = sharedpreferences.getString(TAG_nis, null);
+        id_guru = sharedpreferences.getString(TAG_GURU, null);
         nama = sharedpreferences.getString(TAG_NAMA, null);
         mRecycler = (RecyclerView) findViewById(R.id.rv);
         Log.i("id_pemohon"+id, "onCreate: "+instansi_id);
@@ -114,9 +116,9 @@ public class menu_nilai_guru extends AppCompatActivity {
         ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
         Call<Response_nilai> call = null;
         if (status.equals("1")){
-            call = api.Get_data_NILAI_guru("1");
+            call = api.Get_data_NILAI_guru("1",id_guru);
         }else {
-            call = api.Get_data_NILAI_guru("2");
+            call = api.Get_data_NILAI_guru("2",id_guru);
         }
 
         call.enqueue(new Callback<Response_nilai>() {
@@ -166,9 +168,9 @@ public class menu_nilai_guru extends AppCompatActivity {
         ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
         Call<Response_nilai> call = null;
         if (status.equals("1")){
-            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),"1");
+            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),id_guru,"1");
         }else {
-            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),"2");
+            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),id_guru,"2");
         }
 
         call.enqueue(new Callback<Response_nilai>() {

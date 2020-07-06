@@ -53,10 +53,11 @@ public class menu_siswa extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public final static String TAG_NAMA = "nama";
     public final static String TAG_ID = "id_pemohon";
+    public final static String TAG_GURU = "id_guru";
     public final static String TAG_nik = "nik_pemohon";
     public final static String TAG_AMBIL_INSTNASI_ID = "ambil_id_ins";
     public static final String my_shared_preferences = "my_shared_preferences";
-    String id,nik,nama,instansi_id;
+    String id,nik,nama,instansi_id,id_guru;
     SearchView searchView;
     public static final String session_status = "session_status";
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -73,12 +74,13 @@ public class menu_siswa extends AppCompatActivity {
         session = sharedpreferences.getBoolean(session_status, false);
         id = sharedpreferences.getString(TAG_ID, null);
         nik = sharedpreferences.getString(TAG_nik, null);
+        id_guru = sharedpreferences.getString(TAG_GURU, null);
         nama = sharedpreferences.getString(TAG_NAMA, null);
         instansi_id = sharedpreferences.getString(TAG_AMBIL_INSTNASI_ID, null);
         mRecycler = (RecyclerView) findViewById(R.id.rv);
         Log.i("id_pemohon"+id, "onCreate: "+instansi_id);
 
-        Toast.makeText(this, "ID"+id, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "ID"+id, Toast.LENGTH_SHORT).show();
         mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swifeRefresh);
 
 
@@ -113,7 +115,7 @@ public class menu_siswa extends AppCompatActivity {
     public void get_laporan_selesai() {
 
         ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
-        Call<Response_siswa> call = api.Get_data_SISWA();
+        Call<Response_siswa> call = api.Get_data_SISWA(id_guru);
 
 
         call.enqueue(new Callback<Response_siswa>() {
@@ -161,7 +163,7 @@ public class menu_siswa extends AppCompatActivity {
     public void cari() {
 
         ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
-        Call<Response_siswa> call = api.cari_data_siswa(String.valueOf(searchView.getQuery()));
+        Call<Response_siswa> call = api.cari_data_siswa(String.valueOf(searchView.getQuery()),id_guru);
 
 
         call.enqueue(new Callback<Response_siswa>() {

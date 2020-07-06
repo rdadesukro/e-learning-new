@@ -197,7 +197,7 @@ public class menu_mapel extends AppCompatActivity implements OnLoadCompleteListe
 
             nameTxt.setText(thisDataModel.getNama());
             bab.setText(thisDataModel.getBab());
-            Toast.makeText(context, ""+status, Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(context, ""+status, Toast.LENGTH_SHORT).show();
 
             if (status.equals("guru")){
                 edit.setVisibility(View.VISIBLE);
@@ -628,7 +628,7 @@ public class menu_mapel extends AppCompatActivity implements OnLoadCompleteListe
                     if (path != null) {
                         Log.d("Path: ", path);
                         pdfPath = path;
-                        Toast.makeText(this, "Picked file: " + file +" uri" + uri, Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(this, "Picked file: " + file +" uri" + uri, Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -704,7 +704,7 @@ public class menu_mapel extends AppCompatActivity implements OnLoadCompleteListe
             floatingActionButton.setVisibility(View.GONE);
         }
 
-        Toast.makeText(this, "id_regis "+id_regsis, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "id_regis "+id_regsis, Toast.LENGTH_SHORT).show();
 //        txt_nama_pelayanan.setText(nama);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swifeRefresh);
         mRecycler = (ListView) findViewById(R.id.rv);
@@ -863,6 +863,7 @@ public class menu_mapel extends AppCompatActivity implements OnLoadCompleteListe
                         RequestBody bab1 = RequestBody.create(MediaType.parse("multipart/form-data"), bab.getText().toString());
                         RequestBody sms = RequestBody.create(MediaType.parse("multipart/form-data"), smester.getText().toString());
                         RequestBody nam = RequestBody.create(MediaType.parse("multipart/form-data"), nama_materi.getText().toString());
+                        RequestBody guru = RequestBody.create(MediaType.parse("multipart/form-data"), id_guru);
 
                         MultipartBody.Part body =
                                 MultipartBody.Part.createFormData("materi", file.getName(), requestFile);
@@ -872,6 +873,7 @@ public class menu_mapel extends AppCompatActivity implements OnLoadCompleteListe
                                 nam,
                                 sms,
                                 bab1,
+                                guru,
                                 body);
 
 

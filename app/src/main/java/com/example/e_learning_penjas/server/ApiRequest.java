@@ -99,30 +99,33 @@ public interface ApiRequest {
     Call<BaseResponse> tambah_materi(
             @Part("nama") RequestBody nama,
             @Part("smester") RequestBody smester,
+            @Part("id_guru") RequestBody id_guru,
             @Part("bab") RequestBody bab,
             @Part MultipartBody.Part file);
 
     @GET("data_nilai.php")
     Call<Response_nilai> Get_data_NILAI(@Query("quiz") String quiz,@Query("nis") String nis);
     @GET("data_nilai_guru.php")
-    Call<Response_nilai> Get_data_NILAI_guru(@Query("quiz") String quiz);
+    Call<Response_nilai> Get_data_NILAI_guru(@Query("quiz") String quiz,@Query("id_guru") String id_guru);
 
 
     @FormUrlEncoded
     @POST("cari_nilai_siswa.php")
     Call<Response_nilai> cari_nilai_siswa(
             @Field("search") String search,
+            @Field("id_guru") String id_guru,
             @Field("quiz") String quiz);
 
     @FormUrlEncoded
     @POST("cari_data_siswa.php")
     Call<Response_siswa> cari_data_siswa(
-            @Field("search") String search);
+            @Field("search") String search,
+            @Field("id_guru") String id_guru);
 
 
 
     @GET("data_siswa.php")
-    Call<Response_siswa> Get_data_SISWA();
+    Call<Response_siswa> Get_data_SISWA(@Query("id_guru") String id_guru);
 
     @GET("profil_siswa.php")
     Call<Response_profil> profil_siswa(@Query("nis") String nis);

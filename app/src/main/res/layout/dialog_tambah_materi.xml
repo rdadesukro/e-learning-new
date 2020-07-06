@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="BAB"
+            android:hint="Bab"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="@+id/edit_nama_mapel"
             app:layout_constraintStart_toStartOf="@+id/edit_nama_mapel"

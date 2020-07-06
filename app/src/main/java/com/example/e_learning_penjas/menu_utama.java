@@ -1,16 +1,23 @@
 package com.example.e_learning_penjas;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -21,8 +28,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
+import com.example.e_learning_penjas.model.model_profil.Response_profil;
+import com.example.e_learning_penjas.model.model_profil.ResultItem_profil;
+import com.example.e_learning_penjas.server.ApiRequest;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.e_learning_penjas.app.AppConfig.TAG_ID;
 
@@ -37,6 +54,9 @@ public class menu_utama extends AppCompatActivity {
 
     @BindView(R.id.cardView6)
     CardView cardView6;
+    private List<ResultItem_profil> data = new ArrayList<>();
+    @BindView(R.id.txt_status)
+    TextView txt_status;
 
 
     @BindView(R.id.card_siswa)
@@ -76,16 +96,28 @@ public class menu_utama extends AppCompatActivity {
 
         if (status.equals("siswa")){
             card_siswa.setVisibility(View.GONE);
+            txt_status.setText("SISWA");
 
         }
 
-        Glide.with(menu_utama.this)
-                .load("http://192.168.1.71/penjas/images/profil/ade.jpg")
-                .apply(new RequestOptions()
-                        .fitCenter()
-                        .circleCrop()
-                        .error(R.drawable.profil))
-                .into(foto_profil);
+        if (status.equals("guru")){
+           // card_siswa.setVisibility(View.GONE);
+            txt_status.setText("GURU");
+
+        }
+
+
+//        Glide.with(menu_utama.this)
+//                .load("http://192.168.1.71/penjas/images/profil/ade.jpg")
+//                .apply(new RequestOptions()
+//                        .fitCenter()
+//                        .circleCrop()
+//                        .error(R.drawable.profil))
+//                .into(foto_profil);
+
+        GET_profil();
+
+
     }
 
 
@@ -193,7 +225,7 @@ public class menu_utama extends AppCompatActivity {
         status = sharedpreferences.getString(TAG_STATUS, null);
         nis = sharedpreferences.getString(TAG_nis,null);
         nama = sharedpreferences.getString(TAG_NAMA, null);
-        Toast.makeText(this, ""+status+"   "+nis, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, ""+status+"   "+nis, Toast.LENGTH_SHORT).show();
         if (status.equals("siswa")){
             card_siswa.setVisibility(View.GONE);
             txt_nip.setText("NIK: "+nis);
@@ -203,5 +235,82 @@ public class menu_utama extends AppCompatActivity {
 
         txt_nama.setText(nama);
         Log.i("id_guru", "onResume: "+id_guru + " " + id_guru);
+    }
+
+    public void GET_profil() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.71/penjas/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiRequest service = retrofit.create(ApiRequest.class);
+
+        Call<Response_profil> call;
+
+        if (status.equals("siswa")){
+            call = service.profil_siswa(nis);
+        }else {
+            call = service.profil_guru(nis);
+        }
+
+//        Call<Response_profil>
+//        Call<Response_profil>
+        call.enqueue(new Callback<Response_profil>() {
+            @Override
+            public void onResponse(Call<Response_profil> call, Response<Response_profil> response) {
+
+                try {
+                    data = response.body().getResult();
+                    Log.i("data", "onCreate: "+data);
+                    if (data.size()==0){
+                        //mShimmerViewContainer.startShimmerAnimation();
+                    }else {
+                        //  card_data.setVisibility(View.VISIBLE);
+
+
+                        for (int i = 0; i < data.size(); i++) {
+
+
+
+                            Glide.with(menu_utama.this)
+                                    .load("http://192.168.1.71/penjas/images/profil/"+data.get(i).getFoto())
+                                    .listener(new RequestListener<Drawable>() {
+                                        @Override
+                                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                            //progres_foto.setVisibility(View.GONE);
+                                            return false;
+                                        }
+
+                                        @Override
+                                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                          //  progres_foto.setVisibility(View.GONE);
+                                            return false;
+                                        }
+                                    })
+                                    .circleCrop()
+                                    .error(R.drawable.books)
+                                    .into(foto_profil);
+                        }
+                    }
+
+
+
+                    //  txt_alamat.setText("Kecamatann "+kec+" Kelurahan "+kel+" "+" Alamat "+alamat+" Rt "+rt);
+
+
+                } catch (Exception e) {
+                    Log.d("onResponse", "There is an error");
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Response_profil> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+
+
     }
 }
