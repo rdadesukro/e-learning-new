@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 		$path = "images/before/".$random.".png";
 		$name = $random.".png";
 
-		$actualpath = "http://192.168.43.48/e_pelayanan/$path";
+		$actualpath = "http://192.168.1.71/e_pelayanan/$path";
   sql1 =  "INSERT INTO registrasis (id,pemohon_id,layanan_id,instansi_id,status,tgl_reg,created_at,created_by,updated_at,updated_by,uuid)
 	 VALUES  (NULL,'1','1','$name','1','','','','','1')";
   

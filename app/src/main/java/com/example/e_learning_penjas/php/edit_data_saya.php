@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 		$path = "images/before/".$random.".png";
 		$name = $random.".png";
 
-		$actualpath = "http://192.168.43.48/e_pelayanan/$path";
+		$actualpath = "http://192.168.1.71/e_pelayanan/$path";
 
 		
    require_once('dbConnect.php');
@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 		$path = "images/before/".$random.".png";
 		$name = $random.".png";
 
-		$actualpath = "http://192.168.43.48/e_pelayanan/$path";
+		$actualpath = "http://192.168.1.71/e_pelayanan/$path";
 
 
 		// sesuiakan ip address laptop/pc atau URL server

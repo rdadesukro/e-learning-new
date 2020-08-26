@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
   $path = "images/profil/".$random.".png";
 		$name = $random.".png";
 
-	 $actualpath ="http://192.168.43.48/penjas/$path";
+	 $actualpath ="http://192.168.1.71/penjas/$path";
    require_once('dbConnect.php');
    //Cek npm sudah terdaftar apa belum
   
