@@ -96,13 +96,7 @@ public class menu_quiz extends AppCompatActivity {
                 //  final List<Response_cek> masalah_list = response.body().getResult();
                 data = response.body().getResult();
 
-//                for (int i = 0; i < data.size(); i++) {
-//
-//                     nis_tampung= data.get(i).getNis();
-//                     quiz= data.get(i).getQuiz();
-//
-//
-//                }
+
 
                 if (data.size() == 0) {
                     if (quiz_tampung.equals("1")) {
