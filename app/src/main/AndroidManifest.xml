@@ -25,10 +25,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu_bantuan"
+        <activity android:name=".menu_detail_vidio"></activity>
+        <activity
+            android:name=".menu_vidio"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".quiz_tujuh"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".quiz_enam"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".quiz_lima"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".quiz_empat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".quis_tiga"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".menu_bantuan"
             android:label="Menu Bantuan"
             android:parentActivityName=".menu_utama"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".menu_nilai_guru"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -54,8 +74,9 @@
         <activity
             android:name=".menu_register"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".menu_tenttang"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".menu_tenttang"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".menu_lupa_password"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -66,8 +87,9 @@
         <activity
             android:name=".menu_utama"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".menu_login"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".menu_login"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".menu_quiz"
             android:parentActivityName=".menu_utama"

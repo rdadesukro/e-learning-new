@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 
 public interface MyInterface {
 
-    String JSONURL = "http://192.168.1.71/e_pelayanan/";
+    String JSONURL = "http://192.168.43.48/e_pelayanan/";
 
     @GET("upload_syarat.php")
     Call<String> Get_data_berkas1(@Query("layanan_id") String layanan_id);

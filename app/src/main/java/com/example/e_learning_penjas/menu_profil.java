@@ -240,7 +240,7 @@ public class menu_profil extends AppCompatActivity {
 
         img_profil.setImageResource(0);
         Glide.with(menu_profil.this)
-                .load("http://192.168.1.71/penjas/images/profil/"+foto)
+                .load("http://192.168.43.48/penjas/images/profil/"+foto)
                 .apply(new RequestOptions()
                         .fitCenter()
                         .circleCrop()
@@ -262,7 +262,7 @@ public class menu_profil extends AppCompatActivity {
                         requestCameraPermission(MEDIA_TYPE_IMAGE);
                     }
                     Glide.with(menu_profil.this)
-                            .load("http://192.168.1.71/penjas/images/profil/"+foto)
+                            .load("http://192.168.43.48/penjas/images/profil/"+foto)
                             .apply(new RequestOptions()
                                     .fitCenter()
                                     .circleCrop()
@@ -276,7 +276,7 @@ public class menu_profil extends AppCompatActivity {
                     startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_FILE);
                 } else if (items[item].equals("Cancel")) {
                     Glide.with(menu_profil.this)
-                            .load("http://192.168.1.71/penjas/images/profil/"+foto)
+                            .load("http://192.168.43.48/penjas/images/profil/"+foto)
                             .apply(new RequestOptions()
                                     .fitCenter()
                                     .circleCrop()
@@ -471,7 +471,7 @@ public class menu_profil extends AppCompatActivity {
     public void GET_profil() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.71/penjas/")
+                .baseUrl("http://192.168.43.48/penjas/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -501,7 +501,7 @@ public class menu_profil extends AppCompatActivity {
                             txt_kelas.setText(""+data.get(i).getNamaKelas());
                             txt_tgl.setText(""+data.get(i).getTempatLahir()+", "+data.get(i).getTglLahir());
                             Glide.with(menu_profil.this)
-                                    .load("http://192.168.1.71/penjas/images/profil/"+data.get(i).getFoto())
+                                    .load("http://192.168.43.48/penjas/images/profil/"+data.get(i).getFoto())
                                     .listener(new RequestListener<Drawable>() {
                                         @Override
                                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

@@ -9,6 +9,7 @@ import com.example.e_learning_penjas.model.model_materi.Response_materi;
 import com.example.e_learning_penjas.model.model_nilai.Response_nilai;
 import com.example.e_learning_penjas.model.model_profil.Response_profil;
 import com.example.e_learning_penjas.model.model_siswa.Response_siswa;
+import com.example.e_learning_penjas.model.vidio.Response_vidio;
 
 
 import java.util.List;
@@ -108,7 +109,8 @@ public interface ApiRequest {
     @GET("data_nilai_guru.php")
     Call<Response_nilai> Get_data_NILAI_guru(@Query("quiz") String quiz,@Query("id_guru") String id_guru);
 
-
+    @GET("vidio.php")
+    Call<Response_vidio> vidio();
     @FormUrlEncoded
     @POST("cari_nilai_siswa.php")
     Call<Response_nilai> cari_nilai_siswa(

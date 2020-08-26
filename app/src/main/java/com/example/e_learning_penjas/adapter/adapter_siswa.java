@@ -61,7 +61,7 @@ public class adapter_siswa extends RecyclerView.Adapter<adapter_siswa.HolderData
 
 
         Glide.with(ctx)
-                .load("http://192.168.1.71/penjas/images/profil/"+dm.getFoto())
+                .load("http://192.168.43.48/penjas/images/profil/"+dm.getFoto())
                 .apply(new RequestOptions()
                         .fitCenter()
                         .error(R.drawable.siswa))

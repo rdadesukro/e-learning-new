@@ -69,7 +69,7 @@ public class adapter_nilai extends RecyclerView.Adapter<adapter_nilai.HolderData
 
 
         Glide.with(ctx)
-                .load("http://192.168.1.71/penjas/images/profil/"+dm.getFoto())
+                .load("http://192.168.43.48/penjas/images/profil/"+dm.getFoto())
                 .apply(new RequestOptions()
                         .fitCenter()
                         .error(R.drawable.bg))

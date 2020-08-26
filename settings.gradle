@@ -1,2 +1,5 @@
+include ':app:YouTubeAndroidPlayerApi'
+include ':mylibrary2'
+include ':mylibrary'
 include ':app'
 rootProject.name='e-learning-penjas'

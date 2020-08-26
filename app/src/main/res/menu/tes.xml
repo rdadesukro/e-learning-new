@@ -14,4 +14,35 @@
         app:showAsAction="never"
         />
 
+
+    <item
+        android:id="@+id/quiz3"
+        android:title="Quiz  Tiga"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/quiz4"
+        android:title="Quiz  Empat"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/quiz5"
+        android:title="Quiz  Lima"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/quiz6"
+        android:title="Quiz  Enam"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/quiz7"
+        android:title="Quiz  Tuju"
+        app:showAsAction="never"
+        />
+
 </menu>

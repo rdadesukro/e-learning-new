@@ -279,9 +279,9 @@ public class menu_login extends AppCompatActivity  implements Validator.Validati
         pDialog.setMessage("Logging in ...");
         showDialog();
         if (spiner_login.getSelectedItem().equals("Siswa")){
-             url = "http://192.168.1.71/penjas/login.php";
+             url = "http://192.168.43.48/penjas/login.php";
         }else {
-             url = "http://192.168.1.71/penjas/login_guru.php";
+             url = "http://192.168.43.48/penjas/login_guru.php";
         }
 
         StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

@@ -1,4 +1,5 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -9,14 +10,39 @@
         app:showAsAction="never"
         />
     <item
-        android:id="@+id/quiz2"
-        android:title="Quiz  Dua"
+        android:id="@+id/quiz3"
+        android:title="Quiz  Tiga"
         app:showAsAction="never"
         />
+
+    <item
+        android:id="@+id/quiz4"
+        android:title="Quiz  Empat"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/quiz5"
+        android:title="Quiz  Lima"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/quiz6"
+        android:title="Quiz  Enam"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/quiz7"
+        android:title="Quiz  Tuju"
+        app:showAsAction="never"
+        />
+
     <item
         android:id="@+id/app_bar_search"
         android:icon="@drawable/ic_search_black_24dp"
         app:showAsAction="always"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        ></item>
+        tools:ignore="MenuTitle"></item>
 </menu>

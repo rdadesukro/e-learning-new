@@ -17,7 +17,7 @@ $instansi_id=addslashes(trim($_POST['instansi_id']));
 		$path = "images/before/".$random.".png";
 		$name = $random.".png";
 
-		$actualpath = "http://192.168.1.71/e_pelayanan/$path";
+		$actualpath = "http://192.168.43.48/e_pelayanan/$path";
 
    require_once('dbConnect.php');
     $sql = "SELECT * FROM registrasis WHERE pemohon_id ='$pemohon_id' and layanan_id ='$layanan_id' ";
@@ -58,7 +58,7 @@ uuid) VALUES (0,'$pemohon_id','$layanan_id','$instansi_id','1','$dateNow','1','1
 		$path = "images/before/".$random.".png";
 		$name = $random.".png";
 
-		$actualpath = "http://192.168.1.71/e_pelayanan/$path";
+		$actualpath = "http://192.168.43.48/e_pelayanan/$path";
 
 
 		// sesuiakan ip address laptop/pc atau URL server
