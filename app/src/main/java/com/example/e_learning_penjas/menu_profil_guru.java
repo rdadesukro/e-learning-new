@@ -605,6 +605,13 @@ public class menu_profil_guru extends AppCompatActivity {
             }
         });
     }
+  public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
 
+            startActivity(new Intent(menu_profil_guru.this, menu_utama.class));
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 }
