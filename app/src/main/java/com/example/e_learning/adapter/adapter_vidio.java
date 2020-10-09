@@ -1,6 +1,9 @@
-package com.example.e_learning.adapter;
+package com.example.e_learning_penjas.adapter;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,34 +11,35 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.e_learning.R;
-import com.example.e_learning.model.model_nilai.ResultItem_nilai;
+import com.example.e_learning_penjas.R;
+//import com.example.e_learning_penjas.menu_detail_vidio;
+import com.example.e_learning_penjas.model.vidio.ResultItem_vidio;
+
 
 import java.util.List;
 
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class adapter_nilai extends RecyclerView.Adapter<adapter_nilai.HolderData> {
+public class adapter_vidio extends RecyclerView.Adapter<adapter_vidio.HolderData> {
     private static CountDownTimer countDownTimer;
 
-    private List<ResultItem_nilai> mList ;
+    private List<ResultItem_vidio> mList ;
     private Context ctx;
     String status_laporan,status_baru;
     String timer;
-    public adapter_nilai(Context ctx, List<ResultItem_nilai> mList)
+    public adapter_vidio(Context ctx, List<ResultItem_vidio> mList)
     {
         this.ctx = ctx;
         this.mList = mList;
     }
     @Override
     public HolderData onCreateViewHolder(ViewGroup parent, int viewType) {
-        View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_niali,parent, false);
+        View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_vidio,parent, false);
         HolderData holder = new HolderData(layout);
         return holder;
     }
@@ -43,16 +47,13 @@ public class adapter_nilai extends RecyclerView.Adapter<adapter_nilai.HolderData
     @Override
     public void onBindViewHolder(final HolderData holder, int position) {
         //  Toast.makeText(ctx, waktu, Toast.LENGTH_SHORT).show();
-        final ResultItem_nilai dm = mList.get(position);
+        final ResultItem_vidio dm = mList.get(position);
         String waktu;
 
 
 
 
         holder.nama.setText(dm.getNama());
-        holder.txt_nis.setText(dm.getAmbilNis());
-        holder.txt_nilai.setText(dm.getNilai());
-        holder.txt_quiz.setText("Quiz "+dm.getQuiz());
 
 
 
@@ -60,7 +61,7 @@ public class adapter_nilai extends RecyclerView.Adapter<adapter_nilai.HolderData
 
 
         Glide.with(ctx)
-                .load("http://192.168.43.48/penjas/images/profil/"+dm.getFoto())
+                .load("http://192.168.43.48/penjas/images/vidio/"+dm.getFoto())
                 .apply(new RequestOptions()
                         .fitCenter()
                         .error(R.drawable.bg))
@@ -82,15 +83,9 @@ public class adapter_nilai extends RecyclerView.Adapter<adapter_nilai.HolderData
     class HolderData extends  RecyclerView.ViewHolder{
 
         @BindView(R.id.txt_nama) TextView nama;
+        @BindView(R.id.bg_foto) ImageView bg;
 
-        @BindView(R.id.txt_nis) TextView txt_nis;
-        @BindView(R.id.txt_nilai) TextView txt_nilai;
-        @BindView(R.id.txt_quiz) TextView txt_quiz;
-
-
-        @BindView(R.id.img_profil) ImageView bg;
-
-        ResultItem_nilai dm;
+        ResultItem_vidio dm;
 
 
 
@@ -102,7 +97,16 @@ public class adapter_nilai extends RecyclerView.Adapter<adapter_nilai.HolderData
             nama.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                 //   click_desc_data();
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(dm.getLink()));
+                    try {
+                        ctx.startActivity(webIntent);
+                    } catch (ActivityNotFoundException ex) {
+                    }
+//                    Intent goInput = new Intent(ctx, menu_detail_vidio.class);
+//                     goInput.putExtra("nama", dm.getNama());
+//                    goInput.putExtra("link", dm.getLink());
+//                    ctx.startActivity(goInput);
                 }
             });
             v.setOnClickListener(new View.OnClickListener() {

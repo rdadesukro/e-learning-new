@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.e_learning">
+    package="com.example.e_learning_penjas">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -17,7 +17,7 @@
         android:required="true" />
 
     <application
-        android:name="com.example.e_learning.app.AppController"
+        android:name=".app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,61 +25,61 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.e_learning.menu_bantuan"
+        <activity android:name=".menu_bantuan"
             android:label="Menu Bantuan"
-            android:parentActivityName="com.example.e_learning.menu_utama"
+            android:parentActivityName=".menu_utama"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.e_learning.menu_nilai_guru"
+            android:name=".menu_nilai_guru"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_profil_guru"
+            android:name=".menu_profil_guru"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_detail_siswa"
+            android:name=".menu_detail_siswa"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_siswa"
+            android:name=".menu_siswa"
             android:label="Menu Siswa"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_nilai"
+            android:name=".menu_nilai"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_baca"
+            android:name=".menu_baca"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.quiz_dua"
+            android:name=".quiz_dua"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_register"
+            android:name=".menu_register"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.example.e_learning.menu_tenttang"
+        <activity android:name=".menu_tenttang"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name="com.example.e_learning.menu_lupa_password"
+            android:name=".menu_lupa_password"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_profil"
-            android:parentActivityName="com.example.e_learning.menu_utama"
+            android:name=".menu_profil"
+            android:parentActivityName=".menu_utama"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_utama"
+            android:name=".menu_utama"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.example.e_learning.menu_login"
+        <activity android:name=".menu_login"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name="com.example.e_learning.menu_quiz"
-            android:parentActivityName="com.example.e_learning.menu_utama"
+            android:name=".menu_quiz"
+            android:parentActivityName=".menu_utama"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_mapel"
+            android:name=".menu_mapel"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.quiz_satu"
+            android:name=".quiz_satu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.e_learning.menu_pembuka"
+            android:name=".menu_pembuka"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

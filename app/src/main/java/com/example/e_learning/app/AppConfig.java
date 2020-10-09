@@ -3,8 +3,8 @@ package com.example.e_learning.app;
 public class AppConfig {
 	//USER
 	// Server user login url
-	public static String URL_LOGIN_USER = "http://192.168.1.71/penjas/login.php";
-	public static String JUMLAH = "http://192.168.1.71/penjas/data_rusak.php?pemohon_id=";
+	public static String URL_LOGIN_USER = "http://192.168.43.48/penjas/login.php";
+	public static String JUMLAH = "http://192.168.43.48/penjas/data_rusak.php?pemohon_id=";
 
 	// Server user register url
 	public static String URL_REGISTER_USER = "http://192.168.43.48/penjas/register_user.php";

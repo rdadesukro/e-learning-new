@@ -9,9 +9,9 @@
         android:id="@+id/cardView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:cardElevation="10dp"
-        app:cardCornerRadius="10dp"
         android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
@@ -53,10 +53,10 @@
         android:id="@+id/imageView8"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bg" />
 
@@ -70,58 +70,62 @@
 
     <Button
         android:id="@+id/buttonSelesai"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:textColor="#ffffff"
         android:background="@color/colorAccent"
         android:text="Selesai"
+        android:textColor="#ffffff"
 
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonPrev"
         app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonPrev"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toTopOf="@+id/buttonPrev"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonNext"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:textColor="#ffffff"
         android:background="@color/colorAccent"
+
         android:padding="8dp"
         android:text="Selanjutnya"
-
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/buttonSelesai"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonSelesai"
         app:layout_constraintTop_toTopOf="@+id/buttonSelesai"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonPrev"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
-        android:textColor="#ffffff"
+        android:layout_marginBottom="16dp"
+
         android:background="@color/colorAccent"
 
         android:padding="8dp"
         android:text="Sebelumnya"
 
-        app:layout_constraintBottom_toBottomOf="@+id/buttonSelesai"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSelesai"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonSelesai"
         tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.Toolbar
@@ -131,10 +135,10 @@
         android:background="@color/colorAccent"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:title="Quiz Dua"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Quiz Empat" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -344,8 +348,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Jambi"
+                    android:fontFamily="serif-monospace"
 
+                    android:text="Jambi"
                     android:textSize="18sp" />
 
                 <RadioButton
@@ -353,8 +358,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Kumpe"
+                    android:fontFamily="serif-monospace"
 
+                    android:text="Kumpe"
                     android:textSize="18sp" />
 
                 <RadioButton
@@ -362,8 +368,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:text="Ampelu"
+                    android:fontFamily="serif-monospace"
 
+                    android:text="Ampelu"
                     android:textSize="18sp" />
 
                 <RadioButton
@@ -387,9 +394,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
+                android:fontFamily="serif-monospace"
                 android:text="Bola berasal dari mana?"
-                android:textAppearance="?android:attr/textAppearanceMedium"
 
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

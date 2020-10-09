@@ -112,8 +112,18 @@ public class menu_nilai extends AppCompatActivity {
         Call<Response_nilai> call = null;
         if (status.equals("1")){
            call = api.Get_data_NILAI("1",nik);
-        }else {
+        }else if (status.equals("2")){
             call = api.Get_data_NILAI("2",nik);
+        }else if (status.equals("3")){
+            call = api.Get_data_NILAI("3",nik);
+        }else if (status.equals("4")){
+            call = api.Get_data_NILAI("4",nik);
+        }else if (status.equals("5")){
+            call = api.Get_data_NILAI("5",nik);
+        }else if (status.equals("6")){
+            call = api.Get_data_NILAI("6",nik);
+        }else {
+            call = api.Get_data_NILAI("7",nik);
         }
 
         call.enqueue(new Callback<Response_nilai>() {
@@ -361,9 +371,40 @@ public class menu_nilai extends AppCompatActivity {
                 init_get_laporan_baru_saya();
 
                 return true;
+
             case R.id.quiz2:
                 status="2";
                 getSupportActionBar().setTitle("NILAI QUIZ 2");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz3:
+                status="3";
+                getSupportActionBar().setTitle("NILAI QUIZ 3");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz4:
+                status="4";
+                getSupportActionBar().setTitle("NILAI QUIZ 4");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz5:
+                status="5";
+                getSupportActionBar().setTitle("NILAI QUIZ 5");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz6:
+                status="6";
+                getSupportActionBar().setTitle("NILAI QUIZ 6");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz7:
+                status="7";
+                getSupportActionBar().setTitle("NILAI QUIZ 7");
                 init_get_laporan_baru_saya();
                 return true;
 

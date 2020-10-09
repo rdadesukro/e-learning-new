@@ -117,10 +117,19 @@ public class menu_nilai_guru extends AppCompatActivity {
         Call<Response_nilai> call = null;
         if (status.equals("1")){
             call = api.Get_data_NILAI_guru("1",id_guru);
-        }else {
+        }else if (status.equals("2")){
             call = api.Get_data_NILAI_guru("2",id_guru);
+        }else if (status.equals("3")){
+            call = api.Get_data_NILAI_guru("3",id_guru);
+        }else if (status.equals("4")){
+            call = api.Get_data_NILAI_guru("4",id_guru);
+        }else if (status.equals("5")){
+            call = api.Get_data_NILAI_guru("5",id_guru);
+        }else if (status.equals("6")){
+            call = api.Get_data_NILAI_guru("6",id_guru);
+        }else {
+            call = api.Get_data_NILAI_guru("7",id_guru);
         }
-
         call.enqueue(new Callback<Response_nilai>() {
             @Override
             public void onResponse(Call<Response_nilai> call, Response<Response_nilai> response) {
@@ -169,8 +178,18 @@ public class menu_nilai_guru extends AppCompatActivity {
         Call<Response_nilai> call = null;
         if (status.equals("1")){
             call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),id_guru,"1");
-        }else {
+        }else if (status.equals("2")){
             call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),id_guru,"2");
+        }else if (status.equals("3")){
+            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),id_guru,"1");
+        }else if (status.equals("4")){
+            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),id_guru,"4");
+        }else if (status.equals("5")){
+            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),id_guru,"5");
+        }else if (status.equals("6")){
+            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),id_guru,"6");
+        }else {
+            call = api.cari_nilai_siswa(String.valueOf(searchView.getQuery()),id_guru,"7");
         }
 
         call.enqueue(new Callback<Response_nilai>() {
@@ -417,6 +436,36 @@ public class menu_nilai_guru extends AppCompatActivity {
             case R.id.quiz2:
                 status="2";
                 getSupportActionBar().setTitle("NILAI QUIZ 2");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz3:
+                status="3";
+                getSupportActionBar().setTitle("NILAI QUIZ 3");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz4:
+                status="4";
+                getSupportActionBar().setTitle("NILAI QUIZ 4");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz5:
+                status="5";
+                getSupportActionBar().setTitle("NILAI QUIZ 5");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz6:
+                status="6";
+                getSupportActionBar().setTitle("NILAI QUIZ 6");
+                init_get_laporan_baru_saya();
+                return true;
+
+            case R.id.quiz7:
+                status="7";
+                getSupportActionBar().setTitle("NILAI QUIZ 7");
                 init_get_laporan_baru_saya();
                 return true;
 

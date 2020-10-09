@@ -308,7 +308,7 @@ public class menu_mapel extends AppCompatActivity implements OnLoadCompleteListe
             unduh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  new DownloadTask(context, "http://192.168.1.71/penjas/materi/"+thisDataModel.getUrl());
+                  new DownloadTask(context, "http://192.168.43.48/penjas/materi/"+thisDataModel.getUrl());
 
 
                 }
@@ -340,7 +340,7 @@ public class menu_mapel extends AppCompatActivity implements OnLoadCompleteListe
                     AlertDialog mDialog = mBuilder.create();//
                     mDialog.show();
                     FileLoader.with(menu_mapel.this)
-                            .load("http://192.168.1.71/penjas/materi/"+thisDataModel.getUrl(),false) //2nd parameter is optioal, pass true to force load from network
+                            .load("http://192.168.43.48/penjas/materi/"+thisDataModel.getUrl(),false) //2nd parameter is optioal, pass true to force load from network
                             .fromDirectory("My_PDFs", FileLoader.DIR_INTERNAL)
                             .asFile(new FileRequestListener<File>() {
                                 @Override

@@ -83,7 +83,7 @@ public class menu_detail_siswa extends AppCompatActivity {
 
 
         Glide.with(menu_detail_siswa.this)
-                .load("http://192.168.1.71/penjas/images/profil/"+foto)
+                .load("http://192.168.43.48/penjas/images/profil/"+foto)
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
